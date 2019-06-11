@@ -4,6 +4,8 @@ from sklearn.preprocessing import LabelEncoder, OneHotEncoder, StandardScaler
 from sklearn.model_selection import train_test_split, StratifiedShuffleSplit
 import load_image
 
+
+
 def Read_train_data():
     # Read train.csv and pop out the id
     train_data = pd.read_csv('train.csv')
@@ -26,5 +28,10 @@ def load_train_data():
     val_image, val_label = train_image[test_id], label[test_id]
     return (tra_image, tra_label), (val_image, val_label)
 
+<<<<<<< HEAD
 #print(load_train_data())
 (tra_image, tra_label), (val_image, val_label) = load_train_data()
+=======
+print(ID)
+print(species)
+>>>>>>> df70b88b079d9a8fcf04189b1d135eece95eb865
