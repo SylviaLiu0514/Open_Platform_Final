@@ -60,9 +60,9 @@ if __name__ == '__main__':
         if filename=="":
             print('Closing program..')
             break
-        if filename.find('wav')!=-1:
+        if "wav" in filename:
             try:
-                imgname=filename.split('.wav')[0]+".png"
+                imgname=filename.replace('wav','png')
                 create_spectrogram(filename,imgname)
                 filename=imgname
             except:
