@@ -3,6 +3,26 @@ from keras.layers import Dense
 from keras.models import load_model
 from keras.preprocessing.image import img_to_array, load_img
 import numpy as np
+import matplotlib.pyplot as plt
+import librosa
+import librosa.display
+import scipy.misc
+
+def create_spectrogram(filename,name):
+    plt.interactive(False)
+    clip, sample_rate = librosa.load(filename, sr=None)
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.axes.get_xaxis().set_visible(False)
+    ax.axes.get_yaxis().set_visible(False)
+    ax.set_frame_on(False)
+    librosa.display.specshow(librosa.power_to_db(librosa.feature.melspectrogram(y=clip, sr=sample_rate), ref=np.max))
+    plt.savefig(name, dpi=50, bbox_inches='tight', pad_inches=0)
+    plt.close()
+    fig.clf()
+    plt.close(fig)
+    plt.close('all')
+    del filename, name, clip, sample_rate, fig, ax
 def resize_image(image, image_length = 512):
     # Find deflation_rate for narrow the image
     deflation_rate = image_length / float(image.size[max((0, 1), key=lambda i: image.size[i])])
@@ -34,11 +54,19 @@ def decode(arr):
 if __name__ == '__main__':
     model=load_model('urban_sound.h5')
     model.predict(np.empty((1, 512, 512, 1)))
-    print('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInitial successful')
+    print('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInitial success')
     while True:
-        filename=input('file name?')
+        filename=input('File name?')
         if filename=="":
+            print('Closing program..')
             break
+        if filename.find('wav')!=-1:
+            try:
+                imgname=filename.split('.wav')[0]+".png"
+                create_spectrogram(filename,imgname)
+                filename=imgname
+            except:
+                pass
         try:
             testdata=load_images([filename])
         except:
