@@ -7,7 +7,6 @@ Open Platform Final
 # training.py
 合併其他子function
 運行後訓練model並保存為urban_sound.h5
-<<<<<<< HEAD
 # user interface cmd版
 1. 確保predict.py與預先訓練好的model(urban_sound.h5)於相同路徑
 2. 運行predict.py
