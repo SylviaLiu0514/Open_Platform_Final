@@ -138,13 +138,19 @@ def MainView():
         return image.resize((int(image.size[0] * deflation_rate), int(image.size[1] * deflation_rate)))
     def load_images(filenames,image_length=512):
         output_image = np.empty((len(filenames), 512, 512, 1))
+        # i -> the i th of the ID set, image_ID -> the name of the image
         for i in range(len(filenames)):
+            # Turn the image into an array
             image=img_to_array(resize_image(load_img(filenames[i], color_mode = "grayscale"),image_length=512))
+            # Get image height and width
+            # Place the image at the center of the image
             h1 = int((512 - image.shape[0] ) / 2)
             h2 = h1 + image.shape[0]
             w1 = int((512 - image.shape[1]) / 2)
             w2 = w1 + image.shape[1]
+            # Insert into image matrix
             output_image[i, h1:h2, w1:w2, 0:1] = image
+            # Scale the array values so they are between 0 and 1
         return np.around(output_image / 255.0)
     def decode(arr):
         result=[]
@@ -182,7 +188,7 @@ def MainView():
                 #標籤可以是文字或圖片
                 img = tk.Label( image = render);
                 img.image = render;
-                img.place(x = 15, y = 15);  #將影像放入視窗裡，座標為(50，50);    
+                img.place(x = 15, y = 15);  #將影像放入視窗裡，座標為(50，50);
     global window
     window.destroy()
     window = tk.Tk()
