@@ -9,14 +9,10 @@ Open Platform Final
 運行後訓練model並保存為urban_sound.h5
 <<<<<<< HEAD
 # user interface cmd版
-=======
-# user interface
->>>>>>> dd29fc5428e868f15c0f645a9cd5cec2806cb212
 1. 確保predict.py與預先訓練好的model(urban_sound.h5)於相同路徑
 2. 運行predict.py
 3. 輸入欲預測的檔案名稱
 4. 輸入enter結束程式
-<<<<<<< HEAD
 
 # user interface tkinter版
 1. 確保predict.py與預先訓練好的model(urban_sound.h5)於相同路徑
@@ -28,5 +24,3 @@ Open Platform Final
 7. 一個是Choose，點了會跳出視窗請你選你的圖檔(.png)或是音檔(.wav)
 8. 選完後會顯示轉成頻譜的圖片和maching learning判斷的事物
 9. 一個是Logout，點了登出回到登入的視窗
-=======
->>>>>>> dd29fc5428e868f15c0f645a9cd5cec2806cb212
