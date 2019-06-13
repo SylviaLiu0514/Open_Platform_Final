@@ -91,7 +91,22 @@ Python內建的:
 2. pickle / 保存資料
 3. os / 讀取檔案
 
-## 2.3 
+## 2.3 External Interface Requirements
+
+### 2.3.1 User Interfaces
+使用者執行open_platform_final.py後，開啟tkinter視窗介面，有兩個按鈕: Login / SignUp
+1.jpg
+當Password錯誤時會跳出密碼錯誤提示
+10.jpg
+當User name錯誤時會跳出註冊提示
+2.jpg
+接著進入註冊頁面
+3.jpg
+當註冊成功就會跳出提示
+4.jpg
+同時會將帳號密碼存入usrs_info.pickle內
+8.jpg
+接著登入成功進入主頁面，有兩個按鈕: Choose / LogOut
 
 ## 2.4 system features
 
