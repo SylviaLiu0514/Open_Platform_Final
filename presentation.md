@@ -1,38 +1,40 @@
 # 1. Presentation
 ## 1.2.1 Introduction
-組員四人，分工後述
-城市中有許多種類的聲音，如車聲, 喇叭聲, 施工噪音等等。我們希望能藉由程式識別這些聲音,拓展至更多生活面的應用
+* 組員四人，分工後述
+* 城市中有許多種類的聲音，如車聲, 喇叭聲, 施工噪音等等。我們希望能藉由程式識別這些聲音,拓展至更多生活面的應用
 
 ## 1.2.2 Methodology
-訓練模型時使用的輸入為一段長約三秒的聲音檔，使用PCM編碼，但sample rate, bit depth, channel未統一
-輸出為定義的十種label(警笛,喇叭,引擎怠速,槍響,狗吠,兒童嬉戲,音樂,施工,路面鑽鑿,冷氣運轉)之一
+* 訓練模型時使用的輸入為一段長約三秒的聲音檔，使用PCM編碼，但sample rate, bit depth, channel未統一
+* 輸出為定義的十種label(警笛,喇叭,引擎怠速,槍響,狗吠,兒童嬉戲,音樂,施工,路面鑽鑿,冷氣運轉)之一
 
-模型架構:
+* 模型架構:
 先將聲音檔案轉為mel-scaled spectrogram
 resize至512px*512px的灰階圖片
 讀入後使用兩層2D Convolution與Pooling
 Flatten後使用兩層densely-connected NN將節點收斂至10輸出
 
-訓練完成後使用.save()保存model
-儲存的model大小約281MB
+* 訓練完成後使用.save()保存model
+* 儲存的model大小約281MB
 
-由於希望對應輸出的十個值中一個為1其他為0，loss function選擇使用categorical_crossentropy分類交叉熵函式
+* 由於希望對應輸出的十個值中一個為1其他為0，loss function選擇使用categorical_crossentropy分類交叉熵函式
 optimizer使用SGD。learning rate=0.01, batch size=20, epoch=10, 
 
 ## 1.2.3 Dataset
-訓練資料集共有5435個音檔，大小約4GB。 測試資料集共有3297個音檔，大小約2.6GB
-取自kaggle的開放資料集Urban Sound Classification(https://www.kaggle.com/pavansanagapati/urban-sound-classification)
-訓練時使用80%分割，4348筆training sample與1087筆validating sample
+* 訓練資料集共有5435個音檔，大小約4GB。 測試資料集共有3297個音檔，大小約2.6GB
+* 取自kaggle的開放資料集Urban Sound Classification(https://www.kaggle.com/pavansanagapati/urban-sound-classification)
+* 訓練時使用80%分割，4348筆training sample與1087筆validating sample
 另外有3297筆無label的testing sample
 
 ## 1.2.4 Experimental Evaluation
-training時使用kaggle kernal(CPU/RAM16GB)
-RAM: 13GB
-GPU: Tesla P100-PCIE-16GB
+* training時使用kaggle kernal,硬體配置如下
+
+CPU: Intel(R) Xeon(R) CPU @ 2.30GHz (2 cores)
+RAM: 12.75GB avaliable
+GPU: Nvidia Tesla P100-PCIE-16GB (single core)
 CUDA: Version 10.1
 
-10個epoch後就有過擬合趨勢  # 這邊要附上圖片
-目前模型準確率0.75
+* 10個epoch後就有過擬合趨勢  # 這邊要附上圖片
+* 目前模型準確率0.75
 另外由於使用者任意輸入的音檔可能不在原先10個class裡面,設置當所有class的吻合度皆小於閥值時輸出unknown
 
 
