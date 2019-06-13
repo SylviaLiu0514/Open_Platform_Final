@@ -123,8 +123,12 @@ Python內建的:
 * 9.jpg
 
 ### 2.3.2 Hardware Interfaces
-* 一般電腦即可
-
+建議配備:
+* 作業系統: Windows 10 64 bit
+* 處理器: Intel Core i7-3770K
+* 記憶體: 8 GB 記憶體
+* 顯示卡: NVIDIA GTX 980Ti 2560x1440 or NVIDIA GTX 970 1920x1080
+* 最新的顯示卡驅動程式
 ### 2.3.3 Softwqre Interfaces
 * OS: Windows 10
 * Python Runtime: version 3.6
