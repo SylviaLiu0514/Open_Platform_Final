@@ -122,8 +122,11 @@ Python內建的:
 * 點擊LogOut進行登出
 * 9.jpg
 
+### 2.3.2 Hardware Interfaces
+* 一般電腦即可
 
-
+### 2.3.3 Softwqre Interfaces
+* 
 
 ## 2.4 system features
 
