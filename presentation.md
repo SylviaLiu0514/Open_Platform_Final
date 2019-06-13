@@ -94,19 +94,29 @@ Python內建的:
 ## 2.3 External Interface Requirements
 
 ### 2.3.1 User Interfaces
-使用者執行open_platform_final.py後，開啟tkinter視窗介面，有兩個按鈕: Login / SignUp
-1.jpg
-當Password錯誤時會跳出密碼錯誤提示
-10.jpg
-當User name錯誤時會跳出註冊提示
-2.jpg
-接著進入註冊頁面
-3.jpg
-當註冊成功就會跳出提示
-4.jpg
-同時會將帳號密碼存入usrs_info.pickle內
-8.jpg
-接著登入成功進入主頁面，有兩個按鈕: Choose / LogOut
+*使用者執行open_platform_final.py後，開啟tkinter視窗介面，有兩個按鈕: Login / SignUp
+*1.jpg
+*當Password錯誤時會跳出密碼錯誤提示
+*10.jpg
+*當User name錯誤時會跳出註冊提示
+*2.jpg
+*接著進入註冊頁面
+*3.jpg
+*當註冊成功就會跳出提示
+*4.jpg
+*同時會將帳號密碼存入usrs_info.pickle內
+*8.jpg
+*接著登入成功進入主頁面，有兩個按鈕: Choose / LogOut
+*5.jpg
+*點擊Choose選擇要辨識的音源檔
+*6.jpg
+*接著就會出現頻譜以及判斷結果
+*7.jpg
+*點擊LogOut進行登出
+*9.jpg
+
+
+
 
 ## 2.4 system features
 
