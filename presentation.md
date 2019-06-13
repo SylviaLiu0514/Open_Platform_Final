@@ -126,7 +126,10 @@ Python內建的:
 * 一般電腦即可
 
 ### 2.3.3 Softwqre Interfaces
-* 
+* OS: Windows 10
+* Python Runtime: version 3.6
+* Packages: run pip install -r requirements.txt
+* Tensorflow backend
 
 ## 2.4 system features
 
