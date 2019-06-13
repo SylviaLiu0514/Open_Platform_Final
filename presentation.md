@@ -198,11 +198,14 @@ q.系統接收登出訊息，登出並回到登入視窗
 2.5.0 Other Nonfunctional Requirements
 1. 清楚的程式架構及簡單明瞭的註解
 2. 跨平台相容性
+
 2.5.1 Performance Requirements
 1. 每次辨識必須在0.1秒完成(讓real-time辨識得以實現)
 2. 準確率(預測結果等於實際值)必須在70%以上
+
 2.5.2 Safety Requirements
 1. file防呆(只能選定.png或是.wav)
 2. 檢查帳號避免重複註冊
+
 2.5.3 Security Requirements
 1. 使用pickle檔存使用者帳密，pickle檔提供了一個簡單的持久化功能。可以將對象以文件的形式存放在磁盤上，用pickle來序列化使得存使用者帳密不會直接洩漏
