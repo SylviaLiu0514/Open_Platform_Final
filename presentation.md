@@ -41,9 +41,9 @@ CUDA: Version 10.1
 
 # 2. SRS Document
 ## 2.1.1 Purpose
-目的
+本程式的目的是建立一個能夠準確分析音訊源的模型，以辨別聲音的種類。
 ## 2.1.2 Intended Audience and Reading Suggestion
-軟體受眾
+此項目是音訊源分析及辨識的模型，對於各方面需要分辨聲音或是用聲音辨識做輔助性功能都很有用。
 ## 2.1.3 Project Scope
 1. 盡量允許各種格式的音訊源
 2. 限制可辨別的音訊類別為事先定義的十種聲音
