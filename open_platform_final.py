@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox  # import this to fix messagebox error
 from tkinter import filedialog
+from tkinter import StringVar, IntVar
 import pickle
 from PIL import Image, ImageTk
 from keras.models import Sequential
@@ -90,7 +91,13 @@ def Login():
         window_sign_up = tk.Toplevel(window)
         window_sign_up.geometry('350x200')
         window_sign_up.title('Sign up window')
-
+        try:
+            with open('usrs_info.pickle', 'rb') as usr_file:
+                usrs_info = pickle.load(usr_file)
+        except FileNotFoundError:
+            with open('usrs_info.pickle', 'wb') as usr_file:
+                usrs_info = {'admin': 'admin'}
+                pickle.dump(usrs_info, usr_file)
         new_name = tk.StringVar()
         new_name.set('example@python.com')
         tk.Label(window_sign_up, text='User name: ').place(x=10, y= 10)
@@ -178,10 +185,13 @@ def MainView():
                 testdata=load_images([filename])
             except:
                 print('file not found!')
+                text = 'result: file not found!'
+                tk.Label(window, text=text.ljust(20, ' ')).place(x=50, y= 320)
             else:
                 result=decode(model.predict(testdata))
                 print(result[0])
-                tk.Label(window, text='result: '+result[0]).place(x=50, y= 320)
+                text = 'result: '+result[0]
+                tk.Label(window, text=text.ljust(20, ' ')).place(x=50, y= 320)
                 load = Image.open('train/wav.png') if "wav" in filename else Image.open(filename)
                 load = load.resize((415, 280))
                 render = ImageTk.PhotoImage(load);
@@ -189,15 +199,19 @@ def MainView():
                 img = tk.Label( image = render);
                 img.image = render;
                 img.place(x = 15, y = 15);  #將影像放入視窗裡，座標為(50，50);
+    def Logout():
+        is_log_out = tk.messagebox.askyesno('Logout?','Are you sure want to logout?')
+        if is_log_out:
+            Login()
     global window
     window.destroy()
     window = tk.Tk()
     window.geometry('450x400')
     window.title('MainView')
     btn_login = tk.Button(window, text='Choose', command=choose_image)
-    btn_login.place(x=140, y=350)
-    btn_login = tk.Button(window, text='Logout', command=Login)
-    btn_login.place(x=230, y=350)
+    btn_login.place(x=150, y=350)
+    btn_login = tk.Button(window, text='Logout', command=Logout)
+    btn_login.place(x=240, y=350)
 
 
 if __name__ == "__main__":
