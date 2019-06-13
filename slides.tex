@@ -13,6 +13,9 @@
 \documentclass{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage{CJKutf8}
+\usepackage{graphicx} %插入图片的宏包
+\usepackage{float} %设置图片浮动位置的宏包
+\usepackage{subfigure} %插入多图时用子图显示的宏包
 % There are many different themes available for Beamer. A comprehensive
 % list with examples is given here:
 % http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
@@ -36,54 +39,31 @@
 %\usetheme{JuanLesPins}
 %\usetheme{Luebeck}
 
-\usetheme{Madrid}
+%\usetheme{Madrid}
 %\usetheme{Malmoe}
 %\usetheme{Marburg}
 %\usetheme{Montpellier}
 %\usetheme{PaloAlto}
 %\usetheme{Pittsburgh}
-%\usetheme{Rochester}
+\usetheme{Rochester}
 %\usetheme{Singapore}
 %\usetheme{Szeged}
 %\usetheme{Warsaw}
 
-\title{Open Platform Software}
-
-% A subtitle is optional and this may be deleted
-\subtitle{Final Project}
-
-
-% - Give the names in the same order as the appear in the paper.
-% - Use the \inst{?} command only if the authors have different
-%   affiliation.
-
-\institute[Yuan Ze University] % (optional, but mostly needed)
+\title{Final Project}
+\subtitle
 {
-  \inst{1}%
-  Department of Computer Science\\
-  University of Somewhere
+  音訊分類辨識\\
+  及視覺化呈現
 }
 % - Use the \inst command only if there are several affiliations.
 % - Keep it simple, no one is interested in your street address.
 
-\date{Conference Name, 2019}
+\date{2019/06/15}
 % - Either use conference name or its abbreviation.
 % - Not really informative to the audience, more for people (including
 %   yourself) who are reading the slides online
 
-\subject{Theoretical Computer Science}
-% This is only inserted into the PDF information catalog. Can be left
-% out. 
-
-% If you have a file called "university-logo-filename.xxx", where xxx
-% is a graphic format that can be processed by latex or pdflatex,
-% resp., then you can add a logo as follows:
-
-% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
-% \logo{\pgfuseimage{university-logo}}
-
-% Delete this, if you do not want the table of contents to pop up at
-% the beginning of each subsection:
 \AtBeginSubsection[]
 {
   \begin{frame}<beamer>{Outline}
@@ -111,16 +91,21 @@
 \textbf{Introduction to our team }
  \vspace{0.5cm}
 \begin{description}
-\item 組員四人，分工後述
- \vspace{0.5cm}
+
+\item 組員4人\\
+1051526 陳昱安\\
+1051424 唐岳\\
+1051423 張藝憲\\
+1050758 劉紋琦\\
+\vspace{0.5cm}
 \end{description}
-\textbf{Problem trying to solve  }
+\textbf{Problem trying to solve }
 \begin{description}
  \vspace{0.5cm}
-\item 城市中有許多種類的聲音，如車聲, 喇叭聲, 
-\item 施工噪音等等。
-\item 我們希望能藉由程式識別這些聲音,
-\item 拓展至更多生活面的應用
+\item 城市中有許多種類的聲音，如車聲，喇叭聲， \\
+施工噪音等等。\\
+我們希望能藉由程式識別這些聲音，\\
+拓展至更多生活面的應用。
 \end{description}
 \end{frame}
 
@@ -131,20 +116,40 @@
    訓練模型時使用的輸入為一段長約三秒的聲音檔，使用PCM編碼，但sample rate, bit depth, channel未統一
   }
   \end{itemize}
+\begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
+\includegraphics[width=0.9\textwidth]{pic7} %插入图片，[]中设置图片大小，{}中是图片文件名
+\caption{格式/長度各異的音訊} %標題
+\end{figure}
 \end{frame}
 \begin{frame}{Methodology}{Output of model }
   \begin{itemize}
   \item {
-   輸出為定義的十種label(警笛,喇叭,引擎怠速,槍響,狗吠,兒童嬉戲,音樂,施工,路面鑽鑿,冷氣運轉)之一
+   輸出為定義的十種label之一
   }
+\item{警笛,喇叭,引擎怠速,槍響,狗吠,兒童嬉戲,音樂,施工,路面鑽鑿,冷氣運轉}
   \end{itemize}
+
+
+
+
 \end{frame}
 \begin{frame}{Methodology}{Each layer of model }
   \begin{itemize}
   \item {
-    模型架構: 先將聲音檔案轉為mel-scaled spectrogram resize至512px512px的圖片  圖2 讀入後使用兩層2D Convolution與Pooling Flatten後使用兩層densely-connected NN將節點收斂至10輸出  圖3
+    模型架構: 先將聲音檔案轉為mel-scaled spectrogram resize至512px512px的圖片\\讀入後使用兩層2D Convolution與Pooling\\Flatten後使用兩層densely-connected NN將節點收斂至10輸出
   }
   \end{itemize}
+\begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
+\includegraphics[width=0.9\textwidth]{pic0} %插入图片，[]中设置图片大小，{}中是图片文件名
+\caption{轉為頻譜圖的音訊} %標題
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
+\includegraphics[width=0.9\textwidth]{pic4} %插入图片，[]中设置图片大小，{}中是图片文件名
+\caption{視覺化模型} %標題
+\end{figure}
 \end{frame}
 \begin{frame}{Methodology}{How save model? }
   \begin{itemize}
@@ -170,16 +175,22 @@
 \begin{frame}{Methodology}{What’s optimizer and the setting of hyperparameter? }
   \begin{itemize}
   \item {
-    optimizer使用SGD。learning rate=0.01, batch size=20, epoch=10,
+    optimizer使用SGD
   }
+\item{learning rate=0.01}
+\item{batch size=20}
+\item{epoch=10}
   \end{itemize}
 \end{frame}
 \section{Dataset}
 \begin{frame}{Dataset}{size of dataset}
   \begin{itemize}
   \item {
-    訓練資料集共有5435個音檔，大小約4GB。 測試資料集共有3297個音檔，大小約2.6GB
+    訓練資料集共有5435個音檔，大小約4GB
   }
+\item{
+測試資料集共有3297個音檔，大小約2.6GB
+}
   \end{itemize}
 \end{frame}
 \begin{frame}{Dataset}{collect/build dataset}
@@ -188,6 +199,13 @@
     取自kaggle的開放資料集Urban Sound Classification
   }
   \end{itemize}
+
+\begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
+\includegraphics[width=0.9\textwidth]{pic5} %插入图片，[]中设置图片大小，{}中是图片文件名
+\caption{資料集來源} %標題
+\end{figure}
+
+
 \end{frame}
 \begin{frame}{Dataset}
  \begin{itemize}
@@ -246,6 +264,11 @@
   \end{itemize}
   }
   \end{itemize}
+
+\begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
+\includegraphics[width=0.7\textwidth]{pic6} %插入图片，[]中设置图片大小，{}中是图片文件名
+\caption{硬體規格} %標題
+\end{figure}
 \end{frame}
 \begin{frame}{Experimental Evaluation}{How many epochs set for training}
   \begin{itemize}
@@ -253,15 +276,30 @@
     10個epoch後就有過擬合趨勢
   }
   \end{itemize}
+
+\begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
+\includegraphics[width=0.9\textwidth]{pic2} %插入图片，[]中设置图片大小，{}中是图片文件名
+\caption{準確率隨epoch的變化} %標題
+\end{figure}
+
+
+
 \end{frame}
 \begin{frame}{Experimental Evaluation}{Qualitative \& Quantitative evaluation}
   \begin{itemize}
   \item {
-    目前模型準確率最高到0.86 \# 圖4 另外由於使用者任意輸入的音檔可能不在原先10個class裡面,設置當所有class的吻合度皆小於閥值時輸出unknown
+    目前模型準確率最高到0.86 
+另外由於使用者任意輸入的音檔可能不在原先10個class裡面,設置當所有class的吻合度皆小於閥值時輸出unknown
   }
   \end{itemize}
+
+\begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
+\includegraphics[width=0.9\textwidth]{pic3} %插入图片，[]中设置图片大小，{}中是图片文件名
+\caption{最高準確率} %標題
+\end{figure}
+
+
+
 \end{frame}
 \end{CJK}
 \end{document}
-
-
