@@ -287,3 +287,25 @@ q.系統接收登出訊息，登出並回到登入視窗
 
 2.5.3 Security Requirements
 1. 使用pickle檔存使用者帳密，pickle檔提供了一個簡單的持久化功能。可以將對象以文件的形式存放在磁盤上，用pickle來序列化使得存使用者帳密不會直接洩漏
+
+
+# 4 Authorship
+## 4.1 Job scheduling of your team
+5/31~6/7 : 撰寫各自負責的程式碼
+6/7~6/10 : 整合程式與測試
+6/10~6/13 : 撰寫文件與製作Latex
+
+## 4.2 Contribution of each team member with evidence
+* 陳昱安 
+	* 建立模型架構,訓練,測試
+	* 1.2、2.2
+* 唐岳 
+	* 載入資料,圖形化UI設計
+	* 2.4、2.5
+* 劉紋琦
+	* 讀取音訊,轉為圖片並保存
+	* 1.1
+	* LaTex 排版
+* 張藝憲
+	* 訓練資料與測試資料標準化
+	* 2.1、2.3
