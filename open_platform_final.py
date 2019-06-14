@@ -21,21 +21,16 @@ def Login():
     global window
     window.destroy()
     window = tk.Tk()
-    window.title('Welcome to Mofan Python')
+    window.title('LosinView')
     window.geometry('450x300')
-
-# welcome image
-    '''canvas = tk.Canvas(window, height=200, width=500)
-    image_file = tk.PhotoImage(file='welcome.gif')
-    image = canvas.create_image(0,0, anchor='nw', image=image_file)
-    canvas.pack(side='top')'''
+    window.protocol("WM_DELETE_WINDOW", Quit)
+    # welcome image
     load = Image.open('welcome.png');
     load = load.resize((450, 130))
     render = ImageTk.PhotoImage(load);
-    #標籤可以是文字或圖片
     img = tk.Label( image = render);
     img.image = render;
-    img.place(x = 0, y = 0);  #將影像放入視窗裡，座標為(50，50)
+    img.place(x = 0, y = 0);  #coord(0,0)
 
     # user information
     tk.Label(window, text='User name: ').place(x=50, y= 150)
@@ -52,6 +47,7 @@ def Login():
     def usr_login():
         usr_name = var_usr_name.get()
         usr_pwd = var_usr_pwd.get()
+        #check usrs_info.pickle
         try:
             with open('usrs_info.pickle', 'rb') as usr_file:
                 usrs_info = pickle.load(usr_file)
@@ -61,14 +57,11 @@ def Login():
                 pickle.dump(usrs_info, usr_file)
         if usr_name in usrs_info:
             if usr_pwd == usrs_info[usr_name]:
-                #tk.messagebox.showinfo(title='Welcome', message='How are you? ' + usr_name)
                 MainView()
             else:
                 tk.messagebox.showerror(message='Error, your password is wrong, try again.')
         else:
-            is_sign_up = tk.messagebox.askyesno('Welcome',
-                                   'You have not signed up yet. Sign up today?')
-            if is_sign_up:
+            if tk.messagebox.askyesno('Welcome','You have not signed up yet. Sign up today?'):
                 usr_sign_up()
 
     def usr_sign_up():
@@ -88,9 +81,11 @@ def Login():
                     pickle.dump(exist_usr_info, usr_file)
                 tk.messagebox.showinfo('Welcome', 'You have successfully signed up!')
                 window_sign_up.destroy()
+        #create a new window top to origin
         window_sign_up = tk.Toplevel(window)
         window_sign_up.geometry('350x200')
         window_sign_up.title('Sign up window')
+        #check usrs_info.pickle
         try:
             with open('usrs_info.pickle', 'rb') as usr_file:
                 usrs_info = pickle.load(usr_file)
@@ -133,10 +128,6 @@ def MainView():
         ax.set_frame_on(False)
         librosa.display.specshow(librosa.power_to_db(librosa.feature.melspectrogram(y=clip, sr=sample_rate), ref=np.max))
         plt.savefig(name, dpi=50, bbox_inches='tight', pad_inches=0)
-        #plt.close()
-        #fig.clf()
-        #plt.close(fig)
-        #plt.close('all')
         del filename, name, clip, sample_rate, fig, ax
     def resize_image(image, image_length = 512):
         # Find deflation_rate for narrow the image
@@ -175,14 +166,14 @@ def MainView():
             filename = filedialog.askopenfilename(parent=window, initialdir="C:/",title='Choose an image.')
             if "wav" in filename:
                 try:
-                    imgname=filename.replace('wav','png')
+                    imgname = filename.replace('wav','png')
                     create_spectrogram(filename,imgname)
-                    filename=imgname
-                    #load = Image.open(filename);
+                    filename = imgname
                 except:
                     pass
             try:
-                testdata=load_images([filename])
+                testdata = load_images([filename])
+            #not .png or .wav
             except:
                 print('file not found!')
                 text = 'result: file not found!'
@@ -200,18 +191,25 @@ def MainView():
                 img.image = render;
                 img.place(x = 15, y = 15);  #將影像放入視窗裡，座標為(50，50);
     def Logout():
-        is_log_out = tk.messagebox.askyesno('Logout?','Are you sure want to logout?')
-        if is_log_out:
+        if tk.messagebox.askyesno('Logout?','Are you sure want to logout?'):
             Login()
     global window
     window.destroy()
     window = tk.Tk()
     window.geometry('450x400')
     window.title('MainView')
+    window.protocol("WM_DELETE_WINDOW", Quit)
     btn_login = tk.Button(window, text='Choose', command=choose_image)
     btn_login.place(x=150, y=350)
     btn_login = tk.Button(window, text='Logout', command=Logout)
     btn_login.place(x=240, y=350)
+
+def Quit():
+    if tk.messagebox.askyesno('Quit?','Are you sure want to quit?'):
+        window.destroy()
+        #close function create_spectrogram() create plt
+        plt.close()
+        plt.close('all')
 
 
 if __name__ == "__main__":
@@ -219,4 +217,5 @@ if __name__ == "__main__":
     model.predict(np.empty((1, 512, 512, 1)))
     print('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInitial successful')
     Login()
+    window.protocol("WM_DELETE_WINDOW", Quit)
     window.mainloop()
