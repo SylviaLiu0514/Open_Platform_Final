@@ -291,9 +291,9 @@ q.系統接收登出訊息，登出並回到登入視窗
 
 # 4 Authorship
 ## 4.1 Job scheduling of your team
-5/31~6/7 : 撰寫各自負責的程式碼
-6/7~6/10 : 整合程式與測試
-6/10~6/13 : 撰寫文件與製作Latex
+5/31-6/7 : 撰寫各自負責的程式碼<br>
+6/7-6/10 : 整合程式與測試<br>
+6/10-6/13 : 撰寫文件與製作Latex<br>
 
 ## 4.2 Contribution of each team member with evidence
 * 陳昱安 
