@@ -288,6 +288,24 @@ q.系統接收登出訊息，登出並回到登入視窗
 2.5.3 Security Requirements
 1. 使用pickle檔存使用者帳密，pickle檔提供了一個簡單的持久化功能。可以將對象以文件的形式存放在磁盤上，用pickle來序列化使得存使用者帳密不會直接洩漏
 
+# 3 Version Control System using Git
+## 3.1 Show your Git workflow when you using VCS
+* 使用git bash(撰寫程式時使用)
+	1. `git pull`
+	2. work
+	3. `git add .`
+	4. `git commit`
+	5. `git push`
+* 使用GitHub.com(修改文件時使用)
+	1. choose file
+	2. 按下edit this file
+	3. 編輯文件
+	4. 按下Commit changes
+## 3.2 Show your version control
+展示commit紀錄
+## 3.3 Show your using Git to cooperate with your team member
+展示Contributions頁面
+
 
 # 4 Authorship
 ## 4.1 Job scheduling of your team
