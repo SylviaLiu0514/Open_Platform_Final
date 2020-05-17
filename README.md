@@ -63,7 +63,7 @@ loss function選擇使用categorical crossentropy分類交叉熵函式，optimiz
 ![](https://i.imgur.com/WK4918p.jpg)
 
 進入主畫面以後供選擇檔案，可以選擇音檔或者圖片檔，如果選擇音檔會將該音檔轉換成頻譜圖，並放進訓練好模型裡做分析
-![](https://i.imgur.com/Fy1D6rh.png =500x300)
+![](https://i.imgur.com/Fy1D6rh.png)
 
 
 
